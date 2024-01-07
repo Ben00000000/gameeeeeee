@@ -63,13 +63,17 @@ lasers = this.physics.add.group();
 
 
 function shootLaser(enemy) {
-    var laser = lasers.create(enemy.x, enemy.y, 'purpleLaser');
+    var laser = lasers.create(enemy.x, enemy.y- 30, 'purpleLaser');
     laser.setVelocityX(enemy.flipX ? -2000 : 2000);
-    laser.setCollideWorldBounds(true);
+    laser.setCollideWorldBounds(false);
+     if (enemy.flipX) {
+            // Flip the laser sprite if shot from the right enemy
+            laser.setFlipX(true);
+        }
 }
 
 this.time.addEvent({
-    delay: 2000,
+    delay: 5000,
     callback: function () {
         shootLaser(enemyLeft);
         shootLaser(enemyRight);
@@ -77,6 +81,7 @@ this.time.addEvent({
     },
     loop: true
 });
+
 
 
 
@@ -121,8 +126,8 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
     enemyRight.setCollideWorldBounds(true);
 
     // Set the scale of the enemies to make them smaller
-    enemyLeft.setScale(0.8); // Adjust the scale value as needed
-    enemyRight.setScale(0.8); // Adjust the scale value as needed
+    enemyLeft.setScale(0.7); // Adjust the scale value as needed
+    enemyRight.setScale(0.7); // Adjust the scale value as needed
 
     // Add static bodies to make enemies stand on the ground
     this.physics.add.existing(enemyLeft, true);
@@ -235,6 +240,8 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
     this.physics.add.collider([redbouncyenemy1, redbouncyenemy2, redbouncyenemy3, redbouncyenemy4, redbouncyenemy5], [platform1, ground]);
 
 
+
+
     // Add animation for bouncing enemies
     this.anims.create({
         key: 'bouncingEnemyAnimation',
@@ -344,6 +351,8 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
     cursors = this.input.keyboard.createCursorKeys();
         // Add collision between the player and the ground
         this.physics.add.collider(player, [ground, wall, platform, platform1, platform2, platform3, platform4, platform5, platform6]);
+        this.physics.add.collider(player, lasers, laserCollision, null, this);
+
 
 
     // Create on-screen buttons
@@ -383,6 +392,11 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
               player.setVelocityY(-500);
           }
       });
+
+      function laserCollision(player, laser) {
+         laser.destroy();
+      }
+
   }
 
 function update() {
