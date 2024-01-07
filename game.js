@@ -162,6 +162,8 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
         let redbouncyenemy4 = this.physics.add.sprite(690, 250, 'redbouncyenemy');
         let redbouncyenemy5 = this.physics.add.sprite(780, 250, 'redbouncyenemy');
 
+
+
     bouncingEnemy1.setBounce(0.2); // Set bounce value to make the enemy bounce
     bouncingEnemy2.setBounce(0.2);
     bouncingEnemy3.setBounce(0.2);
@@ -307,9 +309,9 @@ redbouncyenemy5.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); /
 
     this.physics.add.collider([bouncingEnemy1, bouncingEnemy2, bouncingEnemy3, bouncingEnemy4, bouncingEnemy5], [platform2, ground]);
 
-    this.physics.add.collider([bluebouncyenemy1, bluebouncyenemy2, bluebouncyenemy3, bluebouncyenemy4, bluebouncyenemy5], [platform3, ground]);
+    this.physics.add.collider([bluebouncyenemy1, bluebouncyenemy2, bluebouncyenemy3, bluebouncyenemy4, bluebouncyenemy5], [platform3, ground, wall, platform, platform1, platform2, platform3, platform4, platform5, platform6]);
 
-    this.physics.add.collider([redbouncyenemy1, redbouncyenemy2, redbouncyenemy3, redbouncyenemy4, redbouncyenemy5], [platform1, ground]);
+    this.physics.add.collider([redbouncyenemy1, redbouncyenemy2, redbouncyenemy3, redbouncyenemy4, redbouncyenemy5], [platform1, ground, wall, platform, platform1, platform2, platform3, platform4, platform5, platform6]);
 // Set up collision callbacks for green bouncing enemies
 this.physics.add.collider(player, [bouncingEnemy1, bouncingEnemy2, bouncingEnemy3, bouncingEnemy4, bouncingEnemy5], function (player, enemy) {
     bouncingEnemyCollision(player, enemy, 0x00FF00); // Green tint
