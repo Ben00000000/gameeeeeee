@@ -111,6 +111,7 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
 
 
 
+
     // Set up player
     player = this.physics.add.sprite(config.width / 2, config.height - 50, 'dude');
     player.setSize(40, 0); // Adjust the width and height as needed
@@ -215,11 +216,81 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
     redbouncyenemy4.setScale(1);
     redbouncyenemy5.setScale(1);
 
-    this.physics.add.existing(bouncingEnemy1, false);
-    this.physics.add.existing(bouncingEnemy2, false);
-    this.physics.add.existing(bouncingEnemy3, false);
-    this.physics.add.existing(bouncingEnemy4, false);
-    this.physics.add.existing(bouncingEnemy5, false);
+// Set custom collision body size for the top part of bouncing enemies
+const topCollisionWidth = 128; // Adjust based on the actual width of your bouncing enemies
+const topCollisionHeight = 0.5; // Adjust based on the height you want for the top collision area
+
+this.physics.add.existing(bouncingEnemy1, false);
+bouncingEnemy1.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bouncingEnemy1.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bouncingEnemy2, false);
+bouncingEnemy2.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bouncingEnemy2.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bouncingEnemy3, false);
+bouncingEnemy3.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bouncingEnemy3.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bouncingEnemy4, false);
+bouncingEnemy4.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bouncingEnemy4.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bouncingEnemy5, false);
+bouncingEnemy5.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bouncingEnemy5.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+// blue
+this.physics.add.existing(bluebouncyenemy1, false);
+bluebouncyenemy1.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bluebouncyenemy1.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bluebouncyenemy2, false);
+bluebouncyenemy2.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bluebouncyenemy2.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bluebouncyenemy3, false);
+bluebouncyenemy3.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bluebouncyenemy3.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bluebouncyenemy4, false);
+bluebouncyenemy4.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bluebouncyenemy4.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bluebouncyenemy5, false);
+bluebouncyenemy5.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+bluebouncyenemy5.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+
+//red
+this.physics.add.existing(redbouncyenemy1, false);
+redbouncyenemy1.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+redbouncyenemy1.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(redbouncyenemy2, false);
+redbouncyenemy2.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+redbouncyenemy2.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(redbouncyenemy3, false);
+redbouncyenemy3.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+redbouncyenemy3.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(redbouncyenemy4, false);
+redbouncyenemy4.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+redbouncyenemy4.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+this.physics.add.existing(bouncingEnemy5, false);
+redbouncyenemy5.body.setSize(topCollisionWidth, topCollisionHeight, true); // Set custom size for the top part
+redbouncyenemy5.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); // Set offset to keep bottom collision intact
+
+
+
+
+    this.physics.add.existing(bouncingEnemy1, true);
+    this.physics.add.existing(bouncingEnemy2, true);
+    this.physics.add.existing(bouncingEnemy3, true);
+    this.physics.add.existing(bouncingEnemy4, true);
+    this.physics.add.existing(bouncingEnemy5, true);
 
     this.physics.add.existing(bluebouncyenemy1, false);
     this.physics.add.existing(bluebouncyenemy2, false);
@@ -239,6 +310,20 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
     this.physics.add.collider([bluebouncyenemy1, bluebouncyenemy2, bluebouncyenemy3, bluebouncyenemy4, bluebouncyenemy5], [platform3, ground]);
 
     this.physics.add.collider([redbouncyenemy1, redbouncyenemy2, redbouncyenemy3, redbouncyenemy4, redbouncyenemy5], [platform1, ground]);
+// Set up collision callbacks for green bouncing enemies
+this.physics.add.collider(player, [bouncingEnemy1, bouncingEnemy2, bouncingEnemy3, bouncingEnemy4, bouncingEnemy5], function (player, enemy) {
+    bouncingEnemyCollision(player, enemy, 0x00FF00); // Green tint
+});
+
+// Set up collision callbacks for blue bouncing enemies
+this.physics.add.collider(player, [bluebouncyenemy1, bluebouncyenemy2, bluebouncyenemy3, bluebouncyenemy4, bluebouncyenemy5], function (player, enemy) {
+    bouncingEnemyCollision(player, enemy, 0x0000FF); // Blue tint
+});
+
+// Set up collision callbacks for red bouncing enemies
+this.physics.add.collider(player, [redbouncyenemy1, redbouncyenemy2, redbouncyenemy3, redbouncyenemy4, redbouncyenemy5], function (player, enemy) {
+    bouncingEnemyCollision(player, enemy, 0xFF0000); // Red tint
+});
 
 
 
@@ -419,6 +504,26 @@ function laserCollision(player, laser) {
     }, 1500);
 }
 
+function bouncingEnemyCollision(player, enemy, tintColor) {
+    // Tint the player based on the specified color
+    player.setTint(tintColor);
+
+    // Disable player input during the tint effect
+    if (player.input) {
+        player.input.enabled = false;
+    }
+
+    // Set a timeout to reset the player after a specified time
+    setTimeout(function () {
+        // Reset tint and re-enable player input if it exists
+        player.clearTint();
+        if (player.input) {
+            player.input.enabled = true;
+        }
+    }, 1500);
+}
+
+
 
   }
 
@@ -436,14 +541,14 @@ function update() {
     // Player movement code
     if (cursors.left.isDown) {
         // Left movement
-        player.setVelocityX(-160);
+        player.setVelocityX(-1600);
         player.flipX = true;
         if (player.body.onFloor()) {
             player.anims.play('left', true);
         }
     } else if (cursors.right.isDown) {
         // Right movement
-        player.setVelocityX(160);
+        player.setVelocityX(1600);
         player.flipX = false;
         if (player.body.onFloor()) {
             player.anims.play('right', true);
