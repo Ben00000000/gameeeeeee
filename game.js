@@ -98,7 +98,7 @@ this.time.addEvent({
 let ground = this.physics.add.staticSprite(0, 700, 'ground').setOrigin(0, 0).setDisplaySize(config.width, 100).refreshBody();
 
 // Create wall at the end of the ground
-let wall = this.physics.add.staticSprite(config.width - 50, 100, 'wall').setOrigin(0, 0).setDisplaySize(50, config.height).refreshBody();
+let wall = this.physics.add.staticSprite(config.width - 10, 100, 'wall').setOrigin(0, 0).setDisplaySize(50, config.height).refreshBody();
 
 let platform = this.physics.add.staticSprite(400, 500, 'platform').setDisplaySize(200, 50).refreshBody();
 let platform1 = this.physics.add.staticSprite(750, 500, 'platform').setDisplaySize(200, 50).refreshBody();
@@ -307,7 +307,7 @@ redbouncyenemy5.body.setOffset(0, bouncingEnemy1.height - topCollisionHeight); /
         this.physics.add.existing(redbouncyenemy5, false);
 
 
-    this.physics.add.collider([bouncingEnemy1, bouncingEnemy2, bouncingEnemy3, bouncingEnemy4, bouncingEnemy5], [platform2, ground]);
+    this.physics.add.collider([bouncingEnemy1, bouncingEnemy2, bouncingEnemy3, bouncingEnemy4, bouncingEnemy5], [platform2, ground, wall, platform, platform1, platform2, platform3, platform4, platform5, platform6]);
 
     this.physics.add.collider([bluebouncyenemy1, bluebouncyenemy2, bluebouncyenemy3, bluebouncyenemy4, bluebouncyenemy5], [platform3, ground, wall, platform, platform1, platform2, platform3, platform4, platform5, platform6]);
 
