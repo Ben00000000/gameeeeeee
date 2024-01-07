@@ -47,6 +47,7 @@ function preload() {
     this.load.image('purpleLaser', 'laser.png'); // Replace 'purpleLaser.png' with your actual purple laser image file
 
 
+
 }
 
 function create() {
@@ -73,7 +74,7 @@ function shootLaser(enemy) {
 }
 
 this.time.addEvent({
-    delay: 5000,
+    delay: 1000,
     callback: function () {
         shootLaser(enemyLeft);
         shootLaser(enemyRight);
@@ -393,9 +394,31 @@ let platform6 = this.physics.add.staticSprite(550, 300, 'platform').setDisplaySi
           }
       });
 
-      function laserCollision(player, laser) {
-         laser.destroy();
-      }
+function laserCollision(player, laser) {
+   // Tint the player to purple
+      player.setTint(0xE816F3);
+
+    // Check if the player has an input property before disabling it
+    if (player.input) {
+        // Disable player input during the tint effect
+        player.input.enabled = false;
+    }
+
+    // Destroy the laser
+    laser.destroy();
+
+    // Set a timeout to reset the player after 500 milliseconds
+    setTimeout(function () {
+        // Reset tint and re-enable player input if it exists
+        player.clearTint();
+        if (player.input) {
+            player.input.enabled = true;
+        }
+
+
+    }, 1500);
+}
+
 
   }
 
