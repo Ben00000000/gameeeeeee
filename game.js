@@ -541,14 +541,14 @@ function update() {
     // Player movement code
     if (cursors.left.isDown) {
         // Left movement
-        player.setVelocityX(-1600);
+        player.setVelocityX(-160);
         player.flipX = true;
         if (player.body.onFloor()) {
             player.anims.play('left', true);
         }
     } else if (cursors.right.isDown) {
         // Right movement
-        player.setVelocityX(1600);
+        player.setVelocityX(160);
         player.flipX = false;
         if (player.body.onFloor()) {
             player.anims.play('right', true);
